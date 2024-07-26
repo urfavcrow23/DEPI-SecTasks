@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" placeholder="Name" />
+      <input type="date" placeholder="Age" />
+      <button id="myButton" type="button">Add</button>
+    </form>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Dynamic rows will be added here -->
+      </tbody>
+    </table>
+    <script>
+      const data = [
+        { name: "ahmed", age: 10 },
+        { name: "mohamed", age: 20 },
+        { name: "ibrahim", age: 30 },
+      ];
+
+      const button = document.getElementById("myButton");
+      const inputs = document.querySelectorAll("input");
+      const tableBody = document.getElementById("tableBody");
+      let id = data.length + 1;
+
+      // Function to render the initial data
+      function renderData() {
+        data.forEach((item, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      }
+
+      // Render initial data
+      renderData();
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        const name = inputs[0].value;
+        const age = inputs[1].value;
+
+        if (name && age) {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${id++}</td>
+            <td>${name}</td>
+            <td>${age}</td>
+          `;
+          tableBody.appendChild(row);
+
+          // Optionally, you can add the new data to the array
+          data.push({ name, age });
+        }
+      });
+    </script>
+  </body>
+</html>

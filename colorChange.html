@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: white;
+        width: 400px;
+        height: 400px;
+      }
+      .active {
+        background-color: red;
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="new" name="mohamed"></div>
+    <button onclick="changecolor()">Change color</button>
+    <script>
+      const div = document.querySelector("div.new");
+      console.log(div.classList);
+
+      function changecolor() {
+        div.classList.toggle("active");
+      }
+
+      div.addEventListener("mousemove", (event) => {
+        div.innerHTML = `this is x ${event.screenX} this is y ${event.screenY}`;
+      });
+    </script>
+  </body>
+</html>
