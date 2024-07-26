@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Placeholder Example</title>
+    <style>
+      .container {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #000;
+        width: 220px;
+        height: 220px;
+      }
+      #displayDiv {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        background-size: cover;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mydiv">
+      <img src="/Tasks Solve/GPT3/Images/Rectangle 222.png" alt="Image 1" />
+      <img src="/Tasks Solve/GPT3/Images/Rectangle 23522.png" alt="Image 2" />
+      <img src="/Tasks Solve/GPT3/Images/Rectangle 27892.png" alt="Image 3" />
+    </div>
+    <div id="displayDiv" onclick="console.log(this)"></div>
+    <script>
+      const images = document.querySelectorAll(".mydiv img");
+      const displayDiv = document.getElementById("displayDiv");
+
+      images.forEach((image) => {
+        image.addEventListener("mouseenter", function (event) {
+          console.log(event.target.src);
+          displayDiv.style.backgroundImage = `url(${event.target.src})`;
+        });
+
+        image.addEventListener("mouseleave", function () {
+          displayDiv.style.backgroundImage = "";
+        });
+      });
+
+      displayDiv.addEventListener("click", function (event) {
+        console.log("event.target:", event.target);
+        console.log("This", this);
+        this.style.border = "2px solid green";
+      });
+    </script>
+  </body>
+</html>
